@@ -1,5 +1,6 @@
 # docker-wait-for-mysql
-Waiting for MySQL Docker
+
+Python waiting for MySQL Docker
 
 
 ## About
@@ -80,6 +81,7 @@ use mydb;
 
 ```
 
+sudo docker-compose run web django-admin.py startproject mydjangoapp .
 sudo docker-compose build
 sudo docker-compose up
 
