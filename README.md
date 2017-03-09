@@ -6,8 +6,8 @@ Docker composer with python Django app waiting for MySQL database creation
 
 ### Help links
 
-https://docs.docker.com/compose/django/
-https://docs.docker.com/compose/startup-order/
+* https://docs.docker.com/compose/django/
+* https://docs.docker.com/compose/startup-order/
 
 Docker composer Django + MySQL example
 
