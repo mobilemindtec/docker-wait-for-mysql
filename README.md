@@ -76,7 +76,7 @@ use mydb;
 
 ```
 
-#### Execute
+#### Execute command
 
 ```
 
@@ -85,7 +85,7 @@ sudo docker-compose up
 
 ```
 
-#### Command to import data
+#### Import data command
 
 ```
 sudo docker exec database.dev bash /tmp/db_import.sh
