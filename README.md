@@ -1,9 +1,13 @@
 # docker-wait-for-mysql
 
-Python waiting for MySQL Docker
-
+Docker composer with python Django app waiting for MySQL database creation
 
 ## About
+
+### Help links
+
+https://docs.docker.com/compose/django/
+https://docs.docker.com/compose/startup-order/
 
 Docker composer Django + MySQL example
 
@@ -77,17 +81,41 @@ use mydb;
 
 ```
 
-#### Execute command
+### Create django files
 
 ```
 
 sudo docker-compose run web django-admin.py startproject mydjangoapp .
+
+```
+
+### change mydjangoapp/settings.py
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mydb',
+        'USER': 'root',
+        'PASSWORD': 'pass',
+        'HOST': 'db',
+        'PORT': '3306',        
+        'OPTIONS': { 'init_command' : 'SET default_storage_engine=INNODB,character_set_connection=utf8,collation_connection=utf8_unicode_ci' }
+    }
+}
+
+```
+
+### Run container
+
+```
+
 sudo docker-compose build
 sudo docker-compose up
 
 ```
 
-#### Import data command
+### Import data command
 
 ```
 sudo docker exec database.dev bash /tmp/db_import.sh
