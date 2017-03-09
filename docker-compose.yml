@@ -1,0 +1,28 @@
+
+version: '2'
+services:
+  db:
+    image: mysql
+    container_name: database.dev
+    #command: mysqld --user=root --verbose
+    volumes:
+      - ./db_import.sql:/tmp/db_import.sql
+      - ./db_import.sh:/tmp/db_import.sh
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "mydb"
+      MYSQL_USER: "adm"
+      MYSQL_PASSWORD: "pass"
+      MYSQL_ROOT_PASSWORD: "pass"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+  web:
+    build: .
+      # command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - "db"
+    command: ["/tmp/wait-for-mysql.sh", "db", "3306", "pass", "mydb", "--", "python", "manage.py", "runserver", "0.0.0.0:8000"]
