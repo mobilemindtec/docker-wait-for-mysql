@@ -1,8 +1,8 @@
-# docker-wait-for-mysql
+# About
 
 Docker composer with python Django app waiting for MySQL database creation
 
-## About
+
 
 ### Help links
 
